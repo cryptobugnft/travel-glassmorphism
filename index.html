@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horizon Travel — Discover the World</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      color: #f0f0f0;
+      background: #0f1d3a;
+      background-image: 
+        linear-gradient(rgba(15, 29, 58, 0.88), rgba(15, 29, 58, 0.92)),
+        url('https://images.pexels.com/photos/32228895/pexels-photo-32228895.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    header {
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #a5d8ff, #d0efff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: #e0f0ff;
+      text-decoration: none;
+      margin-left: 2.2rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #a5d8ff;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5%;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 780px;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2.2rem;
+    }
+
+    .search-box {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 1.4rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .search-box input,
+    .search-box select,
+    .search-box button {
+      padding: 0.9rem 1.3rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+
+    .search-box input::placeholder,
+    .search-box select {
+      color: rgba(240,240,255,0.7);
+    }
+
+    .search-box button {
+      background: linear-gradient(90deg, #4dabf7, #69c0ff);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .search-box button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(77,171,247,0.4);
+    }
+
+    .popular-destinations {
+      padding: 6rem 5% 8rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 3.5rem;
+      background: linear-gradient(90deg, #91d5ff, #d3ecff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.4rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #a5d8ff;
+      margin: 0.8rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #40a9ff, #69c0ff);
+      color: white;
+      padding: 0.7rem 1.6rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #1890ff, #40a9ff);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Horizon Travel</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Destinations</a>
+      <a href="#">Deals</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Discover Your Next Adventure</h1>
+      <p>Handpicked destinations • Best prices • Unforgettable experiences</p>
+
+      <div class="search-box">
+        <input type="text" placeholder="Where to? (City or country)" style="flex: 2;">
+        <select style="flex: 1;">
+          <option>Any date</option>
+          <option>Next month</option>
+          <option>Next 3 months</option>
+          <option>Flexible dates</option>
+        </select>
+        <select style="flex: 1;">
+          <option>2 travelers</option>
+          <option>1 adult</option>
+          <option>2 adults</option>
+          <option>2 adults, 1 child</option>
+        </select>
+        <button>Search Trips</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="popular-destinations">
+    <h2>Popular Destinations</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Santorini">
+        <div class="card-content">
+          <h3>Santorini, Greece</h3>
+          <div class="price">from $1,290</div>
+          <p>Iconic white buildings, blue domes and breathtaking caldera views</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/1483053/pexels-photo-1483053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Bali">
+        <div class="card-content">
+          <h3>Bali, Indonesia</h3>
+          <div class="price">from $890</div>
+          <p>Temples, rice terraces, beaches and island culture</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750" alt="Kyoto">
+        <div class="card-content">
+          <h3>Kyoto, Japan</h3>
+          <div class="price">from $1,490</div>
+          <p>Ancient temples, cherry blossoms & traditional ryokan stays</p>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
